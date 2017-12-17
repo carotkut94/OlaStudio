@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context="com.death.olastudio.MusicActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme"
+        >
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="4sp"
+            android:elevation="8sp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/portfolio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_portrait_black_24dp" />
+
+            <LinearLayout
+                android:id="@+id/toolbar_header"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="4sp"
+                android:elevation="8sp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:elevation="8dp"
+                    android:src="@drawable/ola_header_vector_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:elevation="8dp"
+                    android:fontFamily="@font/alex_brush"
+                    android:foregroundGravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="Studios"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="30sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="antenna.json"
+        app:lottie_loop="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/music_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_container"
+        android:layout_marginBottom="?attr/actionBarSize" />
+</RelativeLayout>

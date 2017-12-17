@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.death.olastudio">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:name=".AppController"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MusicActivity"
+            android:configChanges="orientation|screenLayout"
+            >
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name="dm.audiostreamer.AudioStreamingService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name="dm.audiostreamer.AudioStreamingReceiver">
+        <intent-filter>
+            <action android:name="dm.audiostreamer.close" />
+            <action android:name="dm.audiostreamer.pause" />
+            <action android:name="dm.audiostreamer.next" />
+            <action android:name="dm.audiostreamer.play" />
+            <action android:name="dm.audiostreamer.previous" />
+            <action android:name="android.intent.action.MEDIA_BUTTON" />
+            <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+        </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".network.InternetConnectionDetector"
+            android:enabled="true" >
+            <intent-filter>
+
+                <!-- Intent filters for broadcast receiver -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
